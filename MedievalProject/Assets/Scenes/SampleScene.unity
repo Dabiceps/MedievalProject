@@ -307,16 +307,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  acceleration: 20
-  deceleration: 50
   jumpForce: 5
   jumpCooldown: 0.5
   mouseSensitivity: 100
-  bobFrequency: 1.5
-  bobAmplitude: 0.05
   recoilForce: 5
   recoilDuration: 0.2
-  currentVelocity: {x: 0, y: 0, z: 0}
   inputDirection: {x: 0, y: 0}
   isGrounded: 0
   canMove: 1
@@ -328,9 +323,49 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 911590303366555812, guid: 5b815701e96ee1e448bfe5ccb3b94680, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 911590303366555812, guid: 5b815701e96ee1e448bfe5ccb3b94680, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 911590303366555812, guid: 5b815701e96ee1e448bfe5ccb3b94680, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 911590303366555812, guid: 5b815701e96ee1e448bfe5ccb3b94680, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 911590303366555812, guid: 5b815701e96ee1e448bfe5ccb3b94680, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90
+      objectReference: {fileID: 0}
     - target: {fileID: 2005257606798069784, guid: 5b815701e96ee1e448bfe5ccb3b94680, type: 3}
       propertyPath: m_TagString
       value: Ground
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258113693658282150, guid: 5b815701e96ee1e448bfe5ccb3b94680, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258113693658282150, guid: 5b815701e96ee1e448bfe5ccb3b94680, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258113693658282150, guid: 5b815701e96ee1e448bfe5ccb3b94680, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258113693658282150, guid: 5b815701e96ee1e448bfe5ccb3b94680, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258113693658282150, guid: 5b815701e96ee1e448bfe5ccb3b94680, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -180
       objectReference: {fileID: 0}
     - target: {fileID: 5215122148928005571, guid: 5b815701e96ee1e448bfe5ccb3b94680, type: 3}
       propertyPath: m_LocalPosition.x
