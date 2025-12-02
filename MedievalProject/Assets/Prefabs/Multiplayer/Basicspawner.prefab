@@ -46,3 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPrefab:
     RawGuidValue: 9e4f98e13fb95e344ae916565f50db36
+  HostMaterial: {fileID: 2100000, guid: 109296bad79afc24ba160faeb7b435f4, type: 2}
+  ClientMaterial: {fileID: 2100000, guid: b49a9f1155b0ade48af74c77be944927, type: 2}
