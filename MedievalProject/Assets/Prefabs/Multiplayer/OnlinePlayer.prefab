@@ -219,3 +219,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefabBall: {fileID: 4469148659045445897, guid: 3f4b60826f9293040a48870056210dcd, type: 3}
   _prefabPhysxBall: {fileID: 8537159181605491938, guid: c9c0eeb7612862745996d4e75dfb05ee, type: 3}
+  _Role: 0
+  _material: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}

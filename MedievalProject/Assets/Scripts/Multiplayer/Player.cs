@@ -1,5 +1,5 @@
 using Fusion;
-using UnityEditor.Build.Content;
+using TMPro;
 using UnityEngine;
 
 public class Player : NetworkBehaviour
@@ -20,11 +20,9 @@ public class Player : NetworkBehaviour
 
   [Networked] public PlayerRole Role { get; set; }
 
-  private ChangeDetector _changeDetector;
 
     public override void Spawned()
     {
-        _changeDetector = GetChangeDetector(ChangeDetector.Source.SimulationState);
         if(Object.HasStateAuthority)
         {
           Role = (Runner.IsServer && Object.HasInputAuthority) ? PlayerRole.Host : PlayerRole.Client;
@@ -51,50 +49,41 @@ public class Player : NetworkBehaviour
 
       if (data.direction.sqrMagnitude > 0)
         _forward = data.direction;
-
-      if (HasStateAuthority && delay.ExpiredOrNotRunning(Runner))
-      {
-        if (data.buttons.IsSet(NetworkInputData.MOUSEBUTTON0))
-        {
-          delay = TickTimer.CreateFromSeconds(Runner, 0.5f);
-            Runner.Spawn(_prefabBall,
-            transform.position+_forward, Quaternion.LookRotation(_forward),
-            Object.InputAuthority, (runner, o) =>
-            {
-              // Initialize the Ball before synchronizing it
-              o.GetComponent<Ball>().Init();
-            });
-        }else if (data.buttons.IsSet(NetworkInputData.MOUSEBUTTON1))
-        {
-          delay = TickTimer.CreateFromSeconds(Runner, 0.5f);
-            Runner.Spawn(_prefabPhysxBall,
-            transform.position+_forward, Quaternion.LookRotation(_forward),
-            Object.InputAuthority, (runner, o) =>
-            {
-              // Initialize the PhysxBall before synchronizing it
-              o.GetComponent<PhysxBall>().Init(_forward * 10f);
-            });
-        }
-      }
     }
   }
 
-    public override void Render()
-    {
-      foreach (var change in _changeDetector.DetectChanges(this))
+  private void Update()
+  {
+      if(Object.HasInputAuthority && Input.GetKeyDown(KeyCode.R))
       {
+          RPC_SendMessage("Parer !");
+      }
+  }
 
-        switch (change)
-            {
-                case nameof(Role):
-                    ApplyColor();
-                  break;
-            }      
+    private TMP_Text _messages;
+    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority, HostMode = RpcHostMode.SourceIsHostPlayer)]
+  public void RPC_SendMessage(string message, RpcInfo info = default)
+  {
+      RPC_RelayMessage(message, info.Source);
+  }
 
+  [Rpc(RpcSources.StateAuthority, RpcTargets.All, HostMode = RpcHostMode.SourceIsServer)]
+  public void RPC_RelayMessage(string message, PlayerRef messageSource)
+  {
+      if (_messages == null)
+          _messages = FindFirstObjectByType<TMP_Text>();
+
+      if (messageSource == Runner.LocalPlayer)
+      {
+          message = $"You said: {message}\n";
+      }
+      else
+      {
+          message = $"Some other player said: {message}\n";
       }
 
-    }
-
+      _messages.text += message;
+  }
     public void ApplyColor()
     {
         if (_material == null) return;

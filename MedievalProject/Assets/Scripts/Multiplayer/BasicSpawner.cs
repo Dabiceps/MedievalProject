@@ -21,7 +21,6 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             NetworkObject networkPlayerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
             // Keep track of the player avatars for easy access
             _spawnedCharacters.Add(player, networkPlayerObject);
-            //UpdateColor(networkPlayerObject);
         }
     }
 
@@ -123,20 +122,5 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         _mouseButton0 = _mouseButton0 || Input.GetMouseButtonDown(0);
         _mouseButton1 = _mouseButton1 || Input.GetMouseButtonDown(1);
     }
-
-    /**public Material HostMaterial;
-    public Material ClientMaterial;
-    public void UpdateColor(NetworkObject obj)
-    {
-        if(obj.HasStateAuthority)
-        {
-            obj.GetComponentInChildren<MeshRenderer>().material = HostMaterial;
-        }
-        else
-        {
-            obj.GetComponentInChildren<MeshRenderer>().material = ClientMaterial;
-        }
-    }*/
-
 
 }
