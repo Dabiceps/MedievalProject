@@ -27,6 +27,10 @@ public class Player : NetworkBehaviour
         {
           Role = (Runner.IsServer && Object.HasInputAuthority) ? PlayerRole.Host : PlayerRole.Client;
         }
+        if (!Object.HasInputAuthority)
+        {
+            Object.GetComponentInChildren<Camera>().gameObject.SetActive(false);
+        }
 
         ApplyColor();
     }
