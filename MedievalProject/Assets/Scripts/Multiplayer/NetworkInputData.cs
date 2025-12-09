@@ -3,7 +3,8 @@ using UnityEngine;
 
 public struct NetworkInputData : INetworkInput
 {
-    public Vector3 direction;
+    public Vector2 move;
+    public Vector2 look;
     public NetworkButtons buttons;
 
     public const byte MOUSEBUTTON0 = 0;

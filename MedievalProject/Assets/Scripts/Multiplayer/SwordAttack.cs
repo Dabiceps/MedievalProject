@@ -5,7 +5,6 @@ public class SwordAttack : NetworkBehaviour
 {
     [Networked] public TickTimer attackDelay { get; set; }
     [SerializeField] private float attackCooldown = 5f;
-    [SerializeField] private float attackDuration = 1f;
     private Vector3 initialPosition;
     private Quaternion initialRotation;
 

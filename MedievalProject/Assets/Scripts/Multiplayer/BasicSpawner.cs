@@ -35,18 +35,22 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
         var data = new NetworkInputData();
-
+        //Déplacement ZQSD
         if (Input.GetKey(KeyCode.W))
-            data.direction += Vector3.forward;
+            data.move.y += 1f;
 
         if (Input.GetKey(KeyCode.S))
-            data.direction += Vector3.back;
+            data.move.y -= 1f;
 
         if (Input.GetKey(KeyCode.A))
-            data.direction += Vector3.left;
+            data.move.x -= 1f;
 
         if (Input.GetKey(KeyCode.D))
-            data.direction += Vector3.right;
+            data.move.x += 1f;
+
+        //Souris
+        data.look.x = Input.GetAxisRaw("Mouse X");
+        data.look.y = Input.GetAxisRaw("Mouse Y");
 
         data.buttons.Set(NetworkInputData.MOUSEBUTTON0, _mouseButton0);
         _mouseButton0 = false;
