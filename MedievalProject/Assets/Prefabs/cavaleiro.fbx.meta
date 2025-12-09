@@ -22,7 +22,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -109,7 +109,402 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: cavaleiro(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Armature
+      parentName: cavaleiro(Clone)
+      position: {x: -0, y: 3.8214748, z: 0.0871369}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
+      scale: {x: 100, y: 100, z: 100}
+    - name: controleGeral
+      parentName: Armature
+      position: {x: -0, y: 0.0008713691, z: -0.034611963}
+      rotation: {x: 0.9928412, y: 0.0000042003976, z: -0.000034915036, w: -0.11944187}
+      scale: {x: 1, y: 0.99999994, z: 1.0000011}
+    - name: peControle_L
+      parentName: controleGeral
+      position: {x: -0.0042192354, y: -0.0007344067, z: 0.0017849092}
+      rotation: {x: -0.99284124, y: -0.0000042013417, z: 0.00003491529, w: -0.1194416}
+      scale: {x: 1, y: 1.0000001, z: 1.0000004}
+    - name: pe_L
+      parentName: peControle_L
+      position: {x: -7.026345e-12, y: -6.6814954e-10, z: -5.864817e-11}
+      rotation: {x: -0.0000022315032, y: -0.064385556, z: 0.9979251, w: 0.00000014301666}
+      scale: {x: 1.0000005, y: 1.0000005, z: 1.0000058}
+    - name: pe_L_end
+      parentName: pe_L
+      position: {x: -0, y: 0.007554262, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: handControl_L
+      parentName: controleGeral
+      position: {x: -0.012721765, y: -0.00921455, z: -0.0354549}
+      rotation: {x: -0.9928413, y: -0.000004364834, z: 0.000034935238, w: -0.119441226}
+      scale: {x: 1, y: 1.0000002, z: 1.000004}
+    - name: handControl_L_end
+      parentName: handControl_L
+      position: {x: -0, y: 0.0060261306, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: peControle_R.001
+      parentName: controleGeral
+      position: {x: 0.0041263024, y: -0.0007344067, z: 0.0017843222}
+      rotation: {x: -0.99284124, y: -0.0000042013417, z: 0.00003491529, w: -0.1194416}
+      scale: {x: 1, y: 1.0000001, z: 1.0000004}
+    - name: pe_R.001
+      parentName: peControle_R.001
+      position: {x: 2.9099687e-10, y: -6.518457e-10, z: -6.101632e-11}
+      rotation: {x: -0.0000022314962, y: -0.06438493, z: 0.99792516, w: 0.00000014301622}
+      scale: {x: 1.0000007, y: 1.0000006, z: 0.99999624}
+    - name: pe_R.001_end
+      parentName: pe_R.001
+      position: {x: -0, y: 0.0075542615, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: handControl_R.001
+      parentName: controleGeral
+      position: {x: 0.013042077, y: -0.0092435, z: -0.035575297}
+      rotation: {x: -0.9928413, y: -0.000004364834, z: 0.000034935238, w: -0.119441226}
+      scale: {x: 1, y: 1.0000002, z: 1.000004}
+    - name: handControl_R.001_end
+      parentName: handControl_R.001
+      position: {x: -0, y: 0.0060261306, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: cintura
+      parentName: controleGeral
+      position: {x: -0.000002379459, y: -0.0073625348, z: -0.033831015}
+      rotation: {x: -0.7800053, y: 0.000022002503, z: 0.000027430839, w: 0.625773}
+      scale: {x: 1, y: 1, z: 0.9999999}
+    - name: barriga
+      parentName: cintura
+      position: {x: 3.6776136e-18, y: 0.005857261, z: 3.1700506e-12}
+      rotation: {x: -0.05348268, y: -0.000000116516276, z: 0.000000009114956, w: 0.9985688}
+      scale: {x: 0.9999998, y: 0.99999994, z: 1}
+    - name: peito
+      parentName: barriga
+      position: {x: -1.5543122e-17, y: 0.01056399, z: -8.881784e-18}
+      rotation: {x: -0.000000040994557, y: 0.9992274, z: 0.039301455, w: -0.0000012666084}
+      scale: {x: 1.0000001, y: 1, z: 1.0000001}
+    - name: pescoco
+      parentName: peito
+      position: {x: 9.7699626e-17, y: 0.011841948, z: 3.7252836e-11}
+      rotation: {x: -0.049703613, y: -0.0000009907579, z: -0.000000027674188, w: 0.99876404}
+      scale: {x: 1.0000002, y: 1, z: 1.0000002}
+    - name: cabeca
+      parentName: pescoco
+      position: {x: -3.5527136e-17, y: 0.001426143, z: -2.2351745e-10}
+      rotation: {x: 0.010175228, y: -0.00000022850179, z: -0.000000037556973, w: 0.99994826}
+      scale: {x: 1.0000004, y: 1.0000002, z: 1.0000007}
+    - name: ul
+      parentName: cabeca
+      position: {x: 0.0002697576, y: 0.008977766, z: 0.0024469963}
+      rotation: {x: -0.12472466, y: 0.46865737, z: 0.8735716, w: 0.040948395}
+      scale: {x: 0.03477851, y: 0.034778494, z: 0.03477846}
+    - name: cabeca_end
+      parentName: cabeca
+      position: {x: -0, y: 0.009908054, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ombro_L
+      parentName: peito
+      position: {x: 0.008529306, y: 0.0076123583, z: 0.0003100611}
+      rotation: {x: -0.6989093, y: -0.7134511, z: -0.033089064, w: -0.03766288}
+      scale: {x: 1.0000002, y: 0.9999992, z: 0.99999946}
+    - name: braco_L
+      parentName: ombro_L
+      position: {x: 0.000000003920868, y: 0.011674312, z: -5.2154064e-10}
+      rotation: {x: 0.060958944, y: 0.70406896, z: 0.06903385, w: 0.7041344}
+      scale: {x: 1, y: 1.0000001, z: 1.0000002}
+    - name: mao_L
+      parentName: braco_L
+      position: {x: -2.6084308e-11, y: 0.010819891, z: 0.0000000012619421}
+      rotation: {x: 0.10810749, y: -0.0062703774, z: -0.4312921, w: 0.89569}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000002}
+    - name: polegar_L
+      parentName: mao_L
+      position: {x: -0.0019189579, y: 0.0016302783, z: -0.0005478216}
+      rotation: {x: 0.37383974, y: -0.897086, z: 0.12961902, w: -0.1966712}
+      scale: {x: 1.000001, y: 1.0000008, z: 0.9999995}
+    - name: polegar2_L
+      parentName: polegar_L
+      position: {x: 8.9406965e-10, y: 0.0024390325, z: -5.587935e-10}
+      rotation: {x: -0.37497148, y: 0.8944839, z: -0.13774307, w: -0.2008028}
+      scale: {x: 1.0000006, y: 1.0000014, z: 0.99999934}
+    - name: polegar2_L_end
+      parentName: polegar2_L
+      position: {x: -0, y: 0.001000247, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: dedo1_1_L
+      parentName: mao_L
+      position: {x: -0.0012223055, y: 0.004137419, z: 0.0005951051}
+      rotation: {x: 0.010177364, y: -0.70703316, z: -0.01017841, w: 0.70703405}
+      scale: {x: 0.99999857, y: 1.0000021, z: 0.99999976}
+    - name: dedo1_2_L
+      parentName: dedo1_1_L
+      position: {x: 2.7241184e-10, y: 0.0007811617, z: 1.5366822e-10}
+      rotation: {x: 0.01017722, y: -0.7070331, z: -0.010178529, w: -0.707034}
+      scale: {x: 1.0000002, y: 0.9999992, z: 1.0000012}
+    - name: dedo1_3_L
+      parentName: dedo1_2_L
+      position: {x: -1.862645e-10, y: 0.0009293762, z: 4.4237822e-11}
+      rotation: {x: 0.000000016763805, y: -0, z: 0.00000018673015, w: -1}
+      scale: {x: 1.0000001, y: 1.0000007, z: 0.99999994}
+    - name: dedo1_3_L_end
+      parentName: dedo1_3_L
+      position: {x: -0, y: 0.0008687639, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: dedo2_1_L
+      parentName: mao_L
+      position: {x: -0.00029273104, y: 0.004251133, z: 0.00053483003}
+      rotation: {x: 0.0080729695, y: -0.7070603, z: -0.008073792, w: 0.7070612}
+      scale: {x: 0.9999986, y: 1.000002, z: 0.99999976}
+    - name: dedo2_2_L
+      parentName: dedo2_1_L
+      position: {x: -0.0000000017834827, y: 0.0009847495, z: 1.11758706e-10}
+      rotation: {x: -0.008072942, y: 0.7070603, z: 0.0080738515, w: 0.7070612}
+      scale: {x: 1.0000004, y: 0.9999996, z: 1.0000011}
+    - name: dedo2_3_L
+      parentName: dedo2_2_L
+      position: {x: 3.7252902e-11, y: 0.0009875622, z: -3.9115547e-10}
+      rotation: {x: 0.00000002235174, y: -0, z: -0.00000006286427, w: 1}
+      scale: {x: 1, y: 1.0000002, z: 0.9999998}
+    - name: dedo2_3_L_end
+      parentName: dedo2_3_L
+      position: {x: -0, y: 0.00082027673, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: dedo3_1_L
+      parentName: mao_L
+      position: {x: 0.0005870445, y: 0.004358756, z: 0.00047778297}
+      rotation: {x: 0.0097280005, y: -0.7070394, z: -0.009729222, w: 0.7070403}
+      scale: {x: 0.9999988, y: 1.000002, z: 0.9999998}
+    - name: dedo3_2_L
+      parentName: dedo3_1_L
+      position: {x: 5.0291415e-10, y: 0.00081722264, z: -1.11758706e-10}
+      rotation: {x: -0.003741962, y: 0.7070964, z: 0.015717076, w: 0.7069326}
+      scale: {x: 1.0000002, y: 0.99999946, z: 1.0000012}
+    - name: dedo3_3_L
+      parentName: dedo3_2_L
+      position: {x: -1.11758706e-10, y: 0.00082464865, z: -7.4505804e-11}
+      rotation: {x: 0.0000033152755, y: 0.00000008940697, z: -0.018005256, w: 0.999838}
+      scale: {x: 1.0000004, y: 1.0000005, z: 0.99999946}
+    - name: dedo3_3_L_end
+      parentName: dedo3_3_L
+      position: {x: -0, y: 0.00073207583, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: dedo4_1_L
+      parentName: mao_L
+      position: {x: 0.0014170218, y: 0.004460287, z: 0.0004239663}
+      rotation: {x: 0.009728093, y: -0.7070396, z: -0.009728992, w: 0.70704013}
+      scale: {x: 0.9999988, y: 1.0000019, z: 0.9999999}
+    - name: dedo4_2_L
+      parentName: dedo4_1_L
+      position: {x: -3.7252902e-11, y: 0.0008172226, z: -1.11758706e-10}
+      rotation: {x: -0.0026190167, y: 0.7071017, z: 0.016838934, w: 0.7069066}
+      scale: {x: 0.99999994, y: 0.9999994, z: 1.0000007}
+    - name: dedo4_3_L
+      parentName: dedo4_2_L
+      position: {x: 1.6763806e-10, y: 0.0006944432, z: -1.862645e-10}
+      rotation: {x: 0.0000024177127, y: 0.000000089406946, z: -0.02284742, w: 0.99973905}
+      scale: {x: 1.0000002, y: 1.0000005, z: 0.99999994}
+    - name: dedo4_3_L_end
+      parentName: dedo4_3_L
+      position: {x: -0, y: 0.0005458139, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ombro_R.001
+      parentName: peito
+      position: {x: -0.008436122, y: 0.0076123583, z: 0.0003100222}
+      rotation: {x: -0.106060565, y: 0.17828794, z: 0.691607, w: 0.69184124}
+      scale: {x: 1.0000001, y: 1.0000005, z: 1.0000006}
+    - name: braco_R.001
+      parentName: ombro_R.001
+      position: {x: -7.45058e-10, y: 0.011674308, z: 1.4901161e-10}
+      rotation: {x: -0.06294643, y: 0.46105787, z: -0.06722676, w: 0.882578}
+      scale: {x: 1.0000013, y: 1.0000008, z: 0.99999976}
+    - name: mao_R.001
+      parentName: braco_R.001
+      position: {x: -1.862645e-10, y: 0.010819887, z: 0}
+      rotation: {x: 0.0754147, y: -0.6257173, z: 0.085415244, w: 0.7716831}
+      scale: {x: 0.9999996, y: 1.0000002, z: 1.0000004}
+    - name: polegar_R.001
+      parentName: mao_R.001
+      position: {x: -0.0005478216, y: 0.0016302775, z: -0.001918957}
+      rotation: {x: -0.21373774, y: -0.38495797, z: 0.33748, w: 0.83200413}
+      scale: {x: 1.0000002, y: 1.0000001, z: 1.0000007}
+    - name: polegar2_R.001
+      parentName: polegar_R.001
+      position: {x: -0.0000000010954682, y: 0.0024390311, z: 1.4901161e-10}
+      rotation: {x: 0.21373779, y: 0.38495854, z: -0.33748, w: 0.8320037}
+      scale: {x: 1.0000006, y: 1.0000007, z: 0.99999964}
+    - name: polegar2_R.001_end
+      parentName: polegar2_R.001
+      position: {x: -0, y: 0.001000247, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: dedo1_1_R.001
+      parentName: mao_R.001
+      position: {x: 0.00022555524, y: 0.0046514897, z: -0.0012058233}
+      rotation: {x: -0.013357515, y: -0.99991083, z: 0.000000026077034, w: -0.000057131056}
+      scale: {x: 1.0000013, y: 0.99999964, z: 0.9999998}
+    - name: dedo1_2_R.001
+      parentName: dedo1_1_R.001
+      position: {x: -5.541369e-10, y: 0.0008417491, z: 3.352761e-10}
+      rotation: {x: 0.013357517, y: 0.99991083, z: -0.000000008262767, w: -0.000057488476}
+      scale: {x: 0.9999993, y: 1.0000004, z: 0.99999964}
+    - name: dedo1_3_R.001
+      parentName: dedo1_2_R.001
+      position: {x: -5.5879353e-11, y: 0.000969786, z: -6.3329936e-10}
+      rotation: {x: -0.000000031664964, y: -0.00000002979868, z: -0.000000059604638, w: 1}
+      scale: {x: 1.0000005, y: 1.0000005, z: 1.0000005}
+    - name: dedo1_3_R.001_end
+      parentName: dedo1_3_R.001
+      position: {x: -0, y: 0.000841825, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: dedo2_1_R.001
+      parentName: mao_R.001
+      position: {x: 0.00041671252, y: 0.004414819, z: -0.00033037356}
+      rotation: {x: -0.011417506, y: -0.99993485, z: 0.00000007264316, w: -0.00005888939}
+      scale: {x: 1.0000014, y: 0.99999946, z: 0.9999999}
+    - name: dedo2_2_R.001
+      parentName: dedo2_1_R.001
+      position: {x: 4.0978193e-10, y: 0.0009847488, z: 1.4901161e-10}
+      rotation: {x: 0.0114174485, y: 0.99993485, z: -0.00000002419624, w: -0.000059216683}
+      scale: {x: 0.9999995, y: 1.000001, z: 1.0000001}
+    - name: dedo2_3_R.001
+      parentName: dedo2_2_R.001
+      position: {x: -1.4901161e-10, y: 0.0009875624, z: 3.7252902e-11}
+      rotation: {x: 0.000000026077082, y: -0.000000089406946, z: -0.000000071711824, w: 1}
+      scale: {x: 1, y: 0.9999998, z: 0.99999994}
+    - name: dedo2_3_R.001_end
+      parentName: dedo2_3_R.001
+      position: {x: -0, y: 0.00082027673, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: dedo3_1_R.001
+      parentName: mao_R.001
+      position: {x: 0.00060469884, y: 0.0041820747, z: 0.00053056626}
+      rotation: {x: -0.013758548, y: -0.99990535, z: 0.00000007264316, w: -0.00006574392}
+      scale: {x: 1.0000024, y: 0.9999998, z: 1.0000001}
+    - name: dedo3_2_R.001
+      parentName: dedo3_1_R.001
+      position: {x: -4.4703483e-10, y: 0.00081722095, z: -3.7252902e-11}
+      rotation: {x: 0.0044141524, y: 0.7070464, z: 0.015044807, w: -0.7069934}
+      scale: {x: 1, y: 1.0000011, z: 0.9999992}
+    - name: dedo3_3_R.001
+      parentName: dedo3_2_R.001
+      position: {x: -2.9802322e-10, y: 0.0009288334, z: -2.2351741e-10}
+      rotation: {x: -0.0000016526316, y: 0.000000089406946, z: -0.018638156, w: -0.9998263}
+      scale: {x: 1.0000001, y: 0.9999999, z: 1.0000004}
+    - name: dedo3_3_R.001_end
+      parentName: dedo3_3_R.001
+      position: {x: -0, y: 0.00062789954, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: dedo4_1_R.001
+      parentName: mao_R.001
+      position: {x: 0.0007847155, y: 0.0039591934, z: 0.0013550116}
+      rotation: {x: -0.013758495, y: -0.99990535, z: -0.000000005587935, w: -0.000052422278}
+      scale: {x: 1.0000021, y: 0.9999998, z: 1.0000001}
+    - name: dedo4_2_R.001
+      parentName: dedo4_1_R.001
+      position: {x: 3.352761e-10, y: 0.00081722095, z: -3.7252902e-11}
+      rotation: {x: 0.0034696625, y: 0.70706105, z: 0.015988866, w: -0.7069633}
+      scale: {x: 0.9999999, y: 1.000001, z: 0.99999964}
+    - name: dedo4_3_R.001
+      parentName: dedo4_2_R.001
+      position: {x: -2.9802322e-10, y: 0.0007887101, z: 5.2154064e-10}
+      rotation: {x: -0.0000013690441, y: 0.000000059604638, z: -0.024316026, w: -0.99970436}
+      scale: {x: 1.0000001, y: 1.0000002, z: 0.99999976}
+    - name: dedo4_3_R.001_end
+      parentName: dedo4_3_R.001
+      position: {x: -0, y: 0.0004515662, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: coxa_L
+      parentName: cintura
+      position: {x: -0.0039303633, y: -0.0014091186, z: -0.0008766343}
+      rotation: {x: 0.00012906874, y: 0.03486588, z: 0.9993501, w: 0.009155788}
+      scale: {x: 1.0000113, y: 1.000001, z: 1.0001495}
+    - name: perna_L
+      parentName: coxa_L
+      position: {x: -1.391163e-10, y: 0.015799424, z: 5.5879353e-11}
+      rotation: {x: 0.0091553405, y: -0.9972537, z: 0.07349244, w: -0.00021216439}
+      scale: {x: 0.99999976, y: 0.99999875, z: 1.0000012}
+    - name: perna_L_end
+      parentName: perna_L
+      position: {x: -0, y: 0.019095175, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joelho_L
+      parentName: cintura
+      position: {x: -0.0044465084, y: -0.02005389, z: 0.012185677}
+      rotation: {x: -0.010451525, y: 0.0000000028212526, z: -2.910383e-11, w: 0.9999454}
+      scale: {x: 1, y: 0.99999994, z: 1.0000001}
+    - name: joelho_L_end
+      parentName: joelho_L
+      position: {x: -0, y: 0.0059568346, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: cotuvelo_L
+      parentName: cintura
+      position: {x: -0.009122407, y: 0.02247348, z: 0.011848348}
+      rotation: {x: -0.010451615, y: 0.000000002818524, z: -2.7284841e-11, w: 0.9999454}
+      scale: {x: 1, y: 1, z: 1.0000001}
+    - name: cotuvelo_L_end
+      parentName: cotuvelo_L
+      position: {x: -0, y: 0.0055656335, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: coxa_R.001
+      parentName: cintura
+      position: {x: 0.00383718, y: -0.0014091184, z: -0.00087663427}
+      rotation: {x: 0.00078157295, y: 0.034874316, z: 0.9993498, w: -0.009124413}
+      scale: {x: 1.0000017, y: 1, z: 1.00002}
+    - name: perna_R.001
+      parentName: coxa_R.001
+      position: {x: -1.778244e-10, y: 0.015799424, z: 1.6763806e-10}
+      rotation: {x: -0.009087526, y: -0.9972531, z: 0.07350078, w: 0.0011319543}
+      scale: {x: 1.0000005, y: 1.000001, z: 1.0000012}
+    - name: perna_R.001_end
+      parentName: perna_R.001
+      position: {x: -0, y: 0.019095173, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: joelho_R.001
+      parentName: cintura
+      position: {x: 0.004353328, y: -0.02005389, z: 0.012185677}
+      rotation: {x: -0.010451525, y: 0.0000000028212526, z: -2.910383e-11, w: 0.9999454}
+      scale: {x: 1, y: 0.99999994, z: 1.0000001}
+    - name: joelho_R.001_end
+      parentName: joelho_R.001
+      position: {x: -0, y: 0.0059568346, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: cotuvelo_R.001
+      parentName: cintura
+      position: {x: 0.0077214036, y: 0.02247348, z: 0.011848348}
+      rotation: {x: -0.010451615, y: 0.000000002818524, z: -2.7284841e-11, w: 0.9999454}
+      scale: {x: 1, y: 0.99999994, z: 1.0000001}
+    - name: cotuvelo_R.001_end
+      parentName: cotuvelo_R.001
+      position: {x: -0, y: 0.0055656335, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: cavaleiro
+      parentName: cavaleiro(Clone)
+      position: {x: -0, y: -0.00000047683716, z: 0}
+      rotation: {x: -0.6626112, y: -9.587043e-18, z: 9.587045e-18, w: 0.7489636}
+      scale: {x: 32.204063, y: 29.444809, z: 29.444809}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -120,13 +515,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
