@@ -78,6 +78,14 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
   
     private NetworkRunner _runner;
 
+
+    private void Awake() 
+    {
+        // Désactive la VSync pour tester (permet au jeu de tourner max speed)
+        QualitySettings.vSyncCount = 0; 
+        Application.targetFrameRate = 300; // Ou une valeur haute
+    }
+
     async void StartGame(GameMode mode)
     {
         // Create the Fusion runner and let it know that we will be providing user input

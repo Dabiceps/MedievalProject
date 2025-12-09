@@ -116,7 +116,7 @@ GameObject:
   - component: {fileID: 7308807213334360574}
   - component: {fileID: 5217016224009981540}
   - component: {fileID: -202492852076512134}
-  - component: {fileID: 6055076373241448585}
+  - component: {fileID: -1293801644066898264}
   m_Layer: 0
   m_Name: OnlinePlayer
   m_TagString: Untagged
@@ -161,7 +161,7 @@ MonoBehaviour:
   - {fileID: 3872489694655423481}
   NetworkedBehaviours:
   - {fileID: -202492852076512134}
-  - {fileID: 6055076373241448585}
+  - {fileID: -1293801644066898264}
   - {fileID: 112187236841062102}
   ForceRemoteRenderTimeframe: 0
 --- !u!143 &5217016224009981540
@@ -202,13 +202,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sword: {fileID: 0}
-  lookSensitivity: 2.5
+  lookSensitivity: 250
   minPitch: -75
   maxPitch: 75
   _cam: {fileID: 0}
   _material: {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   _Role: 0
---- !u!114 &6055076373241448585
+--- !u!114 &-1293801644066898264
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -217,14 +217,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 861488483564451354}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 158639473, guid: e725a070cec140c4caffb81624c8c787, type: 3}
+  m_Script: {fileID: 11500000, guid: 378411a89480da345945c2f888327a2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _stateAuthorityChangeErrorCorrectionDelta: 0
-  SyncScale: 0
-  SyncParent: 0
-  _autoAOIOverride: 1
-  DisableSharedModeInterpolation: 0
+  gravity: -9.81
+  jumpImpulse: 1
+  acceleration: 20
+  braking: 15
+  maxSpeed: 5
+  rotationSpeed: 0
 --- !u!1 &4620524058695435324
 GameObject:
   m_ObjectHideFlags: 0

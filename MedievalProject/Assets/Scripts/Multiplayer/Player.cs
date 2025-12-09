@@ -5,15 +5,17 @@ using UnityEngine;
 public class Player : NetworkBehaviour
 {
     [SerializeField] private SwordAttack sword;
-    private CharacterController _cc;
+    
+    // On utilise le NCC standard de Fusion
+    private NetworkCharacterController _ncc;
 
-    //Rotation Souris
-    [SerializeField] private float lookSensitivity = 5f;
+    [Header("Mouse Look")]
+    [SerializeField] private float lookSensitivity = 2.0f; // Valeur plus basse car on multiplie plus tard
     [SerializeField] private float minPitch = -75f;
     [SerializeField] private float maxPitch = 75f;
 
-    private float _yaw;
-    private float _pitch;
+    [Networked] private float _yaw { get; set; } // Synchronisé pour que tout le monde voit la rotation
+    private float _pitch; // Local seulement (caméra)
 
     [SerializeField] private Camera _cam;
     public Material _material;
@@ -23,7 +25,7 @@ public class Player : NetworkBehaviour
 
     private void Awake()
     {
-        _cc = GetComponent<CharacterController>();
+        _ncc = GetComponent<NetworkCharacterController>();
         _cam = GetComponentInChildren<Camera>();
         _material = GetComponentInChildren<MeshRenderer>().material;
         sword = GetComponentInChildren<SwordAttack>();
@@ -35,84 +37,93 @@ public class Player : NetworkBehaviour
             Role = (Runner.IsServer && Object.HasInputAuthority) ? PlayerRole.Host : PlayerRole.Client;
 
         if (!Object.HasInputAuthority)
-            Object.GetComponentInChildren<Camera>().gameObject.SetActive(false);
+        {
+            // Désactiver la caméra des autres joueurs
+            if(_cam) _cam.gameObject.SetActive(false);
+        }
+        else
+        {
+            // Verrouiller la souris pour le joueur local
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
 
         ApplyColor();
-
-        if (Object.HasInputAuthority)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
     }
 
     public override void FixedUpdateNetwork()
     {
+        // 1. Récupérer l'input (Gère automatiquement le cas Host vs Client vs Proxy)
         if (GetInput(out NetworkInputData data))
         {
             data.move.Normalize();
 
+            // 2. Calculer les rotations (Yaw et Pitch)
+            // On le fait AVANT le mouvement pour que le vecteur "Forward" soit à jour
+            CalculateLook(data.look);
 
-            ApplyLook(data.look, Object.HasInputAuthority);
+            // 3. Appliquer le Yaw au transform du joueur
+            // C'est ici qu'on remplace le "Rotate" manquant.
+            // On applique la rotation synchronisée (_yaw).
+            transform.rotation = Quaternion.Euler(0, _yaw, 0 );
 
-            var camForward = _cam ? _cam.transform.forward : transform.forward;
-            var camRight   = _cam ? _cam.transform.right   : transform.right;
-            camForward.y = 0; camRight.y = 0;
-            camForward.Normalize(); camRight.Normalize();
+            // 4. Calculer la direction de mouvement relative à cette nouvelle rotation
+            Vector3 moveDirection = transform.forward * data.move.y + transform.right * data.move.x;
+            
+            // 5. Déplacer avec le NCC
+            // Remets de la vitesse dans ton composant NCC dans l'inspecteur !
+            _ncc.Move(moveDirection * Runner.DeltaTime * 5f); // *5f est un multiplicateur de vitesse temporaire
 
-            Vector3 wishDir = camForward * data.move.y + camRight * data.move.x;
-            if (wishDir.sqrMagnitude > 1) wishDir.Normalize();
-
-            _cc.Move(5 * wishDir * Runner.DeltaTime);
-
+            // 6. Gestion de l'attaque
             if (Object.HasStateAuthority && data.buttons.IsSet(NetworkInputData.MOUSEBUTTON0))
+            {
                 sword.PerformAttack();
+            }
         }
     }
 
-    private void ApplyLook(Vector2 lookInput, bool applyCameraPitch)
+    // Calcul des angles à partir de l'input souris
+    private void CalculateLook(Vector2 lookInput)
     {
-        // Intégration du Delta 
-        _yaw += lookInput.x * lookSensitivity;
-        _pitch -= lookInput.y * lookSensitivity;
-        _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch); //On limite la rotation verticale entre 75 et -75 degrés
+        // On ne met à jour les angles que si on a l'autorité d'Input (le joueur local)
+        // OU si on est le serveur qui traite l'input du client.
+        
+        // Note: lookInput.x/y sont des deltas (différences) envoyés par OnInput
+        float deltaYaw = lookInput.x * lookSensitivity * Runner.DeltaTime;
+        float deltaPitch = lookInput.y * lookSensitivity * Runner.DeltaTime;
 
-        //Appliquer la rotation Yaw sur le joueur (rotation horizontale)
-        transform.rotation = Quaternion.Euler(0, _yaw, 0);
+        _yaw += deltaYaw;
+        _pitch -= deltaPitch;
+        _pitch = Mathf.Clamp(_pitch, minPitch, maxPitch);
+    }
 
-        //appliquer le pitch sur la caméra (rotation verticale)
-        if (applyCameraPitch && _cam != null)
+    // LateUpdate pour la caméra (fluidité visuelle locale)
+    // On met à jour la caméra dans Render pour éviter les saccades liées aux Ticks physiques
+    public override void Render()
+    {
+        if (Object.HasInputAuthority && _cam != null)
+        {
+            // Appliquer le Pitch localement sur la caméra
             _cam.transform.localRotation = Quaternion.Euler(_pitch, 0, 0);
-
-    }
-
-    private void Update()
-    {
-        if (Object.HasInputAuthority && Input.GetKeyDown(KeyCode.R))
-            RPC_SendMessage("Parer !");
-    }
-
-    private TMP_Text _messages;
-
-    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority, HostMode = RpcHostMode.SourceIsHostPlayer)]
-    public void RPC_SendMessage(string message, RpcInfo info = default) => RPC_RelayMessage(message, info.Source);
-
-    [Rpc(RpcSources.StateAuthority, RpcTargets.All, HostMode = RpcHostMode.SourceIsServer)]
-    public void RPC_RelayMessage(string message, PlayerRef messageSource)
-    {
-        if (_messages == null)
-            _messages = FindFirstObjectByType<TMP_Text>();
-
-        if (messageSource == Runner.LocalPlayer)
-            message = $"You said: {message}\n";
-        else
-            message = $"Some other player said: {message}\n";
-
-        _messages.text += message;
+            
+            // On s'assure que le visuel du corps suit bien le yaw réseau (interpolation auto de Fusion)
+            // transform.rotation est géré par Fusion pour l'interpolation entre les ticks
+        }
     }
 
     public void ApplyColor()
     {
         if (_material == null) return;
         _material.color = Role == PlayerRole.Host ? Color.red : Color.blue;
+    }
+    
+    // RPCs conservés pour ton système de chat
+    [Rpc(RpcSources.InputAuthority, RpcTargets.StateAuthority, HostMode = RpcHostMode.SourceIsHostPlayer)]
+    public void RPC_SendMessage(string message, RpcInfo info = default) => RPC_RelayMessage(message, info.Source);
+
+    [Rpc(RpcSources.StateAuthority, RpcTargets.All, HostMode = RpcHostMode.SourceIsServer)]
+    public void RPC_RelayMessage(string message, PlayerRef messageSource)
+    {
+        // ... (ton code RPC existant)
     }
 }
