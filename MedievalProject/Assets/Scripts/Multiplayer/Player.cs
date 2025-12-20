@@ -14,6 +14,8 @@ public class Player : NetworkBehaviour
     [SerializeField] private float minPitch = -75f;
     [SerializeField] private float maxPitch = 75f;
 
+    
+
     [Networked] private float _yaw { get; set; } // Synchronisé pour que tout le monde voit la rotation
     private float _pitch; // Local seulement (caméra)
 
@@ -23,9 +25,10 @@ public class Player : NetworkBehaviour
     public enum PlayerRole : byte { Host = 1, Client = 0 }
     [Networked] public PlayerRole Role { get; set; }
 
-    [Networked] public int Health { get; set; }
-
     private ChangeDetector _changes;
+
+    // PV du joueur
+    [Networked] public int Health { get; set; }
     [SerializeField] public TMP_Text healthText;
     [SerializeField] private int maxHealth = 100;
 
@@ -39,7 +42,7 @@ public class Player : NetworkBehaviour
         _cam = GetComponentInChildren<Camera>();
         gm = FindFirstObjectByType<GameManager>();
         _material = GetComponentInChildren<MeshRenderer>().material;
-        sword = GetComponentInChildren<SwordAttack>();
+        //sword = GetComponentInChildren<SwordAttack>();
         GameObject uiObj = GameObject.Find("HealthText");
         if (uiObj != null)
             healthText = uiObj.GetComponent<TMP_Text>();
@@ -82,12 +85,16 @@ public class Player : NetworkBehaviour
 
             // 2. Calculer les rotations (Yaw et Pitch)
             // On le fait AVANT le mouvement pour que le vecteur "Forward" soit à jour
-            CalculateLook(data.look);
+            if(Cursor.lockState == CursorLockMode.Locked)
+            {
+                CalculateLook(data.look);
 
             // 3. Appliquer le Yaw au transform du joueur
             // C'est ici qu'on remplace le "Rotate" manquant.
             // On applique la rotation synchronisée (_yaw).
             transform.rotation = Quaternion.Euler(0, _yaw, 0 );
+            }
+            
 
             // 4. Calculer la direction de mouvement relative à cette nouvelle rotation
             Vector3 moveDirection = transform.forward * data.move.y + transform.right * data.move.x;
@@ -99,7 +106,7 @@ public class Player : NetworkBehaviour
             // 6. Gestion de l'attaque
             if (Object.HasStateAuthority && data.buttons.IsSet(NetworkInputData.MOUSEBUTTON0))
             {
-                sword.PerformAttack();
+                //sword.PerformAttack();
             }
         }
     }
